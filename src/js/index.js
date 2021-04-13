@@ -15,11 +15,13 @@ const listener = startbtn.addEventListener("click", function(e){
 const startquiz = function(){
     intropage.classList.add('hidden'); //This hides the intro page 
     getquiz.classList.remove('hidden'); //This makes the hidden question appear
+    enterquestions();
     nextquestion(); //Sets up listener for submit button
 }
 
-const enterquestions = function(e){
-
+const enterquestions = function(){
+    const qgrab = document.querySelector('#question')
+    qgrab.innerHTML = '<div> What color is my underwear? </div>'
 } //Will change question(s) to the actual question
 
 const nextquestion = function(){
@@ -29,6 +31,10 @@ const nextquestion = function(){
     }) //Listens for clicking submit button
 }
 
+const database = [
+    "0 yo", "1 this is bchappy", "2 bye"
+]
+console.log(database[0]);
 // const scorekeeper = function(score){
 
 // }
