@@ -11,12 +11,22 @@ html{
     font-size:8rem;
     text-align:center;
 }
-.start{
-    display:flex;
-    align-self:center;
-    font-size:4rem;
+.intro-page{
     
+    align:center;
+   
+    
+}
+.start{
+    margin-left: 44%;
+    font-size:4rem;
+    margin-top: 3%;
 }
 .hidden{
     display:none;
+}
+#quiz-content{
+    
+    text-align:center;
+    font-size: 3rem;
 }

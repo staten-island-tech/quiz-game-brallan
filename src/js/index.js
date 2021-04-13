@@ -1,6 +1,6 @@
 console.log("If you see this you're good to go");
 
-//console.log(domselectors.displaycontainer);
+
 const getquiz = document.querySelector("#quiz-content");
 const intropage = document.querySelector('.intro-page');
 const startbtn = document.querySelector(".start");
@@ -21,20 +21,42 @@ const startquiz = function(){
 
 const enterquestions = function(){
     const qgrab = document.querySelector('#question')
-    qgrab.innerHTML = '<div> What color is my underwear? </div>'
+    
+    
+        
+    
+    qgrab.innerHTML = `<div> ${database[0]} </div>`
 } //Will change question(s) to the actual question
 
 const nextquestion = function(){
     const submit = document.querySelector('.submit');
     const clicksubmit = submit.addEventListener('click', thing=>{
+        
         console.log("Next. Question.");
     }) //Listens for clicking submit button
+    
 }
 
 const database = [
-    "0 yo", "1 this is bchappy", "2 bye"
+    "0 What color is my underwear?", "1 this is bchappy", "2 bye"
 ]
-console.log(database[0]);
+console.log(database[2]);
+
+const answers = [
+    "White", "Green", "Red",
+]
+
+/*const checkanswer = function(){
+    correct = answers[0];
+    
+    const selectans = document.querySelectorAll('#choices');
+ selectans.forEach(function(btn){
+     btn.addEventListener('click',function(e){
+         console.log("you did it");
+ },);
+
+ }
+ ,)};    */
 // const scorekeeper = function(score){
 
 // }
@@ -45,8 +67,3 @@ console.log(database[0]);
 // start.addEventListener('click', function(e){
 //     console.log("Let's get started!");
 // });
-
- //const list = document.querySelector('#book-list ul .name');
-//  list.addEventListener('click', function(e){
-//     console.log("is this thing on?"); });  
-//console.log(list);
