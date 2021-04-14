@@ -29,8 +29,8 @@ const enterquestions = function(x){
     agrab2.innerHTML = `${choice2[x]}`;
     const agrab3 = document.querySelector('#three');
     agrab3.innerHTML = `${choice3[x]}`;
-    //const agrab4 = document.querySelector('#four');
-    //agrab4.innerHTML = `${choice4[x]}`;
+    const agrab4 = document.querySelector('#four');
+    agrab4.innerHTML = `${choice4[x]}`;
 } 
 
 const nextquestion = function(){
