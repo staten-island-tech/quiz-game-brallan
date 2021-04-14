@@ -8,7 +8,7 @@ const startbtn = document.querySelector(".start");
 
 
 const listener = startbtn.addEventListener("click", function(e){
-     console.log("YES FINALLY")
+     
      startquiz()
 });
 
@@ -20,13 +20,18 @@ const startquiz = function(){
 }
 
 const enterquestions = function(x){
-    const qgrab = document.querySelector('#question')
-    
-    
-        
-    
-    qgrab.innerHTML = `<div> ${database[x]} </div>`
-} //Will change question(s) to the actual question
+    const qgrab = document.querySelector('#question') 
+    qgrab.innerHTML = `<div> ${database[x]} </div>`;
+ //Replaces question html with questions from the database
+    const agrab1 = document.querySelector('#one');
+    agrab1.innerHTML = `${choice1[x]}`;
+    const agrab2 = document.querySelector('#two');
+    agrab2.innerHTML = `${choice2[x]}`;
+    const agrab3 = document.querySelector('#three');
+    agrab3.innerHTML = `${choice3[x]}`;
+    //const agrab4 = document.querySelector('#four');
+    //agrab4.innerHTML = `${choice4[x]}`;
+} 
 
 const nextquestion = function(){
     const submit = document.querySelector('.submit');
@@ -37,32 +42,29 @@ const nextquestion = function(){
         // }
         
         ++x;
-        console.log(x);
+        
         enterquestions(x);
         
 
         
-       });   //Listens for clicking submit button
+       });   //Every time you click submit, x increases by 1, leading to new questions and choices being presented.
     
 }
 
 const database = [
-    "0 What color is my underwear?", "1 this is bchappy", "2 bye", "3 yes!"
+    "What's my favorite shirt color?", "What's my github username?", "Bye", "That's the end!"
+]//An array that holds all the questions
+
+
+const choice1 = [
+    "Blue", "BrandonC", "Goodbye!",
 ]
-
-
-const answers = [
-    "White", "Green", "Red",
+const choice2 = [
+    "Grey", "brandon.chiapperino", "see ya",
 ]
-
-
-// const scorekeeper = function(score){
-
-// }
-
-
-
-//const start = document.querySelector('#button start');
-// start.addEventListener('click', function(e){
-//     console.log("Let's get started!");
-//
+const choice3 = [
+    "Red", "B-Chappy", "whatever",
+]
+const choice4 = [
+    "Black", "bboy4548", "That's it?",
+]
