@@ -21,16 +21,16 @@ const startquiz = function(){
 
 const enterquestions = function(x){
     const qgrab = document.querySelector('#question') 
-    qgrab.innerHTML = `<div> ${database[x]} </div>`;
+    qgrab.innerHTML = `<div> ${database[x].question} </div>`;
  //Replaces question html with questions from the database
     const agrab1 = document.querySelector('#one');
-    agrab1.innerHTML = `${choice1[x]}`;
+    agrab1.innerHTML = `${database[x].choice1}`;
     const agrab2 = document.querySelector('#two');
-    agrab2.innerHTML = `${choice2[x]}`;
+    agrab2.innerHTML = `${database[x].choice2}`;
     const agrab3 = document.querySelector('#three');
-    agrab3.innerHTML = `${choice3[x]}`;
+    agrab3.innerHTML = `${database[x].choice3}`;
     const agrab4 = document.querySelector('#four');
-    agrab4.innerHTML = `${choice4[x]}`;
+    agrab4.innerHTML = `${database[x].choice4}`;
 } 
 
 const nextquestion = function(){
@@ -52,7 +52,48 @@ const nextquestion = function(){
 }
 
 const database = [
-    "What's my favorite shirt color?", "What's my github username?", "Bye", "That's the end!"
+    {
+        question: "Which of these Mario Kart Wii tracks did NOT appear in later games?",
+        choice1: "Coconut Mall",
+        choice2: "Mushroom Gorge",
+        choice3: "Toad's Factory",
+        choice4: "Moo Moo Meadows",
+    },
+    {
+        question: "Which character did NOT appear in Mario Kart 64?",
+        choice1: "Daisy",
+        choice2: "Yoshi",
+        choice3: "Wario",
+        choice4: "Donkey Kong",
+    },
+    {
+        question: "What new game mechanic was introduced in Mario Kart Wii?",
+        choice1: "Double item boxes",
+        choice2: "Anti-Gravity",
+        choice3: "Gliding",
+        choice4: "Tricking",
+    },
+    {
+        question: "Which Mario Kart was the first to officially introduce 200cc as a speed option?",
+        choice1: "Mario Kart Double Dash",
+        choice2: "Mario Kart 8",
+        choice3: "Mario Kart Wii",
+        choice4: "Mario Kart 7",
+    },
+    {
+        question: "In what Mario Kart game did Baby Mario first appear in?",
+        choice1: "Mario Kart DS",
+        choice2: "Mario Kart Wii",
+        choice3: "Mario Kart Double Dash",
+        choice4: "Mario Kart 8",
+    },
+    {
+        question: "EXTRA CREDIT: Which GBA Bowser's Castle track  did NOT return in later games?",
+        choice1: "Bowser's Castle 1",
+        choice2: "Bowser's Castle 2",
+        choice3: "Bowser's Castle 3",
+        choice4: "Bowser's Castle 4",
+    }
 ]//An array that holds all the questions
 
 
