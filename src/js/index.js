@@ -53,11 +53,11 @@ const nextquestion = function(){
 
 const database = [
     {
-        question: "Which of these Mario Kart Wii tracks did NOT appear in later games?",
-        choice1: "Coconut Mall",
-        choice2: "Mushroom Gorge",
-        choice3: "Toad's Factory",
-        choice4: "Moo Moo Meadows",
+        question: "Which Mario Kart DS track has cars and trucks as obstacles?",
+        choice1: "Delfino Square",
+        choice2: "Waluigi Pinball",
+        choice3: "Shroom Ridge",
+        choice4: "DK Pass",
     },
     {
         question: "Which character did NOT appear in Mario Kart 64?",
@@ -81,7 +81,7 @@ const database = [
         choice4: "Mario Kart 7",
     },
     {
-        question: "In what Mario Kart game did Baby Mario first appear in?",
+        question: "What Mario Kart game first featured the characters Petey Piranha and King Boo?",
         choice1: "Mario Kart DS",
         choice2: "Mario Kart Wii",
         choice3: "Mario Kart Double Dash",
@@ -97,15 +97,3 @@ const database = [
 ]//An array that holds all the questions
 
 
-const choice1 = [
-    "Blue", "BrandonC", "Goodbye!",
-]
-const choice2 = [
-    "Grey", "brandon.chiapperino", "see ya",
-]
-const choice3 = [
-    "Red", "B-Chappy", "whatever",
-]
-const choice4 = [
-    "Black", "bboy4548", "That's it?",
-]
