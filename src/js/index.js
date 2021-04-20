@@ -31,11 +31,25 @@ const enterquestions = function(x){
     agrab3.innerHTML = `${database[x].choice3}`;
     const agrab4 = document.querySelector('#four');
     agrab4.innerHTML = `${database[x].choice4}`;
+
+
+    /*const answercheck = function(){
+        agrab1.addEventListener('click', function(){
+            if(choice3 === correct){console.log("YES")}
+        })
+    
+    
+    }*/
 } 
+
 
 const nextquestion = function(){
     const submit = document.querySelector('.submit');
     let x = 0;
+    const results = function(){
+        getquiz.classList.add('hidden');
+        resultspage.classList.remove('hidden');
+    }
     const clicksubmit = submit.addEventListener('click', thing=>{
         // for(x = 0; x <5; x++){
         //    // console.log(`Question ${x}`);
@@ -43,8 +57,8 @@ const nextquestion = function(){
         
         ++x;
         
-        enterquestions(x);
-        
+        if(x < 6){enterquestions(x);}
+        else{results();}
 
         
        });   //Every time you click submit, x increases by 1, leading to new questions and choices being presented.
@@ -58,6 +72,7 @@ const database = [
         choice2: "Waluigi Pinball",
         choice3: "Shroom Ridge",
         choice4: "DK Pass",
+        correct: "choice3",
     },
     {
         question: "Which character did NOT appear in Mario Kart 64?",
