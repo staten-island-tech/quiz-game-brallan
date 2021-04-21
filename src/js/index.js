@@ -32,14 +32,37 @@ const enterquestions = function(x){
     const agrab4 = document.querySelector('#four');
     agrab4.innerHTML = `${database[x].choice4}`;
 
+    const green = function(a){
+        const agraba = document.querySelector(`${a}`);
+        agraba.classList.remove('choices');
+        agraba.classList.add('green');
+    }
+    const red = function(c){
+        const agrabc = document.querySelector(`${c}`);
+        agrabc.classList.remove('choices');
+        agrabc.classList.add('red');
+    }
 
-    /*const answercheck = function(){
+
+    const answercheck = function(){
         agrab1.addEventListener('click', function(){
-            if(choice3 === correct){console.log("YES")}
+            if(database[x].correct === "choice1"){green('#one')}
+            else{red('#one')} 
         })
-    
-    
-    }*/
+        agrab2.addEventListener('click', function(){
+            if(database[x].correct === "choice2"){green('#two')}
+            else{red('#two')} 
+        })
+        agrab3.addEventListener('click', function(){
+            if(database[x].correct === "choice3"){green('#three')}
+            else{red('#three')} 
+        })
+        agrab4.addEventListener('click', function(){
+            if(database[x].correct === "choice4"){green('#four')}
+            else{red('#four')} 
+        })  
+    }
+    answercheck();
 } 
 
 
@@ -50,20 +73,28 @@ const nextquestion = function(){
         getquiz.classList.add('hidden');
         resultspage.classList.remove('hidden');
     }
-    const clicksubmit = submit.addEventListener('click', thing=>{
+    submit.addEventListener('click', thing=>{
         // for(x = 0; x <5; x++){
         //    // console.log(`Question ${x}`);
         // }
         
         ++x;
-        
         if(x < 6){enterquestions(x);}
         else{results();}
+        const greenstuff = document.querySelector('.green');
+        greenstuff.classList.remove('green');
+        greenstuff.classList.add('choices');
+        const redstuff = document.querySelector('.red');
+        redstuff.classList.remove('red');
+        redstuff.classList.add('choices');
+        
+        //allchoices.classList.remove('.red');
+        
 
         
-       });   //Every time you click submit, x increases by 1, leading to new questions and choices being presented.
+    })//Every time you click submit, x increases by 1, leading to new questions and choices being presented.
     
-}
+};
 
 const database = [
     {
@@ -80,6 +111,7 @@ const database = [
         choice2: "Yoshi",
         choice3: "Wario",
         choice4: "Donkey Kong",
+        correct: "choice1",
     },
     {
         question: "What new game mechanic was introduced in Mario Kart Wii?",
@@ -87,6 +119,7 @@ const database = [
         choice2: "Anti-Gravity",
         choice3: "Gliding",
         choice4: "Tricking",
+        correct: "choice4",
     },
     {
         question: "Which Mario Kart was the first to officially introduce 200cc as a speed option?",
@@ -94,6 +127,7 @@ const database = [
         choice2: "Mario Kart 8",
         choice3: "Mario Kart Wii",
         choice4: "Mario Kart 7",
+        correct: "choice2",
     },
     {
         question: "What Mario Kart game first featured the characters Petey Piranha and King Boo?",
@@ -101,6 +135,7 @@ const database = [
         choice2: "Mario Kart Wii",
         choice3: "Mario Kart Double Dash",
         choice4: "Mario Kart 8",
+        correct: "choice3",
     },
     {
         question: "EXTRA CREDIT: Which GBA Bowser's Castle track  did NOT return in later games?",
@@ -108,7 +143,7 @@ const database = [
         choice2: "Bowser's Castle 2",
         choice3: "Bowser's Castle 3",
         choice4: "Bowser's Castle 4",
+        correct: "choice4",
     }
 ]//An array that holds all the questions
-
 
