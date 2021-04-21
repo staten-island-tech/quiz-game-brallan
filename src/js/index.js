@@ -16,6 +16,7 @@ const startquiz = function(){
     intropage.classList.add('hidden'); //This hides the intro page 
     getquiz.classList.remove('hidden'); //This makes the hidden question appear
     enterquestions(0);
+    
     nextquestion(); //Sets up listener for submit button
 }
 
@@ -31,38 +32,28 @@ const enterquestions = function(x){
     agrab3.innerHTML = `${database[x].choice3}`;
     const agrab4 = document.querySelector('#four');
     agrab4.innerHTML = `${database[x].choice4}`;
-
-    const green = function(a){
-        const agraba = document.querySelector(`${a}`);
-        agraba.classList.remove('choices');
-        agraba.classList.add('green');
-    }
-    const red = function(c){
-        const agrabc = document.querySelector(`${c}`);
-        agrabc.classList.remove('choices');
-        agrabc.classList.add('red');
-    }
+    
 
 
-    const answercheck = function(){
-        agrab1.addEventListener('click', function(){
-            if(database[x].correct === "choice1"){green('#one')}
-            else{red('#one')} 
-        })
-        agrab2.addEventListener('click', function(){
-            if(database[x].correct === "choice2"){green('#two')}
-            else{red('#two')} 
-        })
-        agrab3.addEventListener('click', function(){
-            if(database[x].correct === "choice3"){green('#three')}
-            else{red('#three')} 
-        })
-        agrab4.addEventListener('click', function(){
-            if(database[x].correct === "choice4"){green('#four')}
-            else{red('#four')} 
-        })  
-    }
-    answercheck();
+    // const answercheck = function(){
+    //     agrab1.addEventListener('click', function(){
+    //         if(database[x].correct === "choice1"){green('#one')}
+    //         else{red('#one')} 
+    //     })
+    //     agrab2.addEventListener('click', function(){
+    //         if(database[x].correct === "choice2"){green('#two')}
+    //         else{red('#two')} 
+    //     })
+    //     agrab3.addEventListener('click', function(){
+    //         if(database[x].correct === "choice3"){green('#three')}
+    //         else{red('#three')} 
+    //     })
+    //     agrab4.addEventListener('click', function(){
+    //         if(database[x].correct === "choice4"){green('#four')}
+    //         else{red('#four')} 
+    //     })  
+    // }
+    // answercheck();
 } 
 
 
@@ -73,13 +64,16 @@ const nextquestion = function(){
         getquiz.classList.add('hidden');
         resultspage.classList.remove('hidden');
     }
-    submit.addEventListener('click', thing=>{
+     submit.addEventListener('click', thing=>{
         // for(x = 0; x <5; x++){
         //    // console.log(`Question ${x}`);
         // }
         
         ++x;
-        if(x < 6){enterquestions(x);}
+        if(x < 6){
+            enterquestions(x);
+            anscheck(x);
+        }
         else{results();}
         const greenstuff = document.querySelector('.green');
         greenstuff.classList.remove('green');
@@ -95,7 +89,49 @@ const nextquestion = function(){
     })//Every time you click submit, x increases by 1, leading to new questions and choices being presented.
     
 };
+const anscheck = function(x){
+    let points = 0;
+    const agrab1 = document.querySelector('#one');
+    
+    const agrab2 = document.querySelector('#two');
+    
+    const agrab3 = document.querySelector('#three');
+    
+    const agrab4 = document.querySelector('#four');
+    
+    const green = function(a){
+        const agraba = document.querySelector(`${a}`);
+        agraba.classList.remove('choices');
+        agraba.classList.add('green');
+        const score = document.querySelector('#scoretext');
+        ++points;
+        score.innerHTML = `Your score is ${points} / 5`;
+    }
+    const red = function(c){
+        const agrabc = document.querySelector(`${c}`);
+        agrabc.classList.remove('choices');
+        agrabc.classList.add('red');
+    }
+    agrab1.addEventListener('click', function(){
+        if(database[x].correct === "choice1"){green('#one')}
+        else{red('#one')} 
+    })
+    agrab2.addEventListener('click', function(){
+        if(database[x].correct === "choice2"){green('#two')}
+        else{red('#two')} 
+    })
+    agrab3.addEventListener('click', function(){
+        if(database[x].correct === "choice3"){green('#three')}
+        else{red('#three')} 
+    })
+    agrab4.addEventListener('click', function(){
+        if(database[x].correct === "choice4"){green('#four')}
+        else{red('#four')} 
+    })
 
+}
+
+    
 const database = [
     {
         question: "Which Mario Kart DS track has cars and trucks as obstacles?",
