@@ -33,7 +33,7 @@ const enterquestions = function(x){
     const agrab4 = document.querySelector('#four');
     agrab4.innerHTML = `${database[x].choice4}`;
     
-
+    anscheck(x);
 
     // const answercheck = function(){
     //     agrab1.addEventListener('click', function(){
@@ -64,23 +64,27 @@ const nextquestion = function(){
         getquiz.classList.add('hidden');
         resultspage.classList.remove('hidden');
     }
-     submit.addEventListener('click', thing=>{
+    submit.addEventListener('click', thing=>{
         // for(x = 0; x <5; x++){
         //    // console.log(`Question ${x}`);
         // }
+        const greenstuff = document.querySelectorAll('.green');
+        Array.from(greenstuff).forEach(color);
         
-        ++x;
-        if(x < 6){
-            enterquestions(x);
-            anscheck(x);
-        }
-        else{results();}
-        const greenstuff = document.querySelector('.green');
-        greenstuff.classList.remove('green');
-        greenstuff.classList.add('choices');
+        function color(){greenstuff.classList.remove('green');
+        greenstuff.classList.add('choices');}
+        color()
         const redstuff = document.querySelector('.red');
         redstuff.classList.remove('red');
         redstuff.classList.add('choices');
+        
+        ++x;
+        if(x < 6){
+            
+            enterquestions(x);
+            
+        }
+        else{results();}
         
         //allchoices.classList.remove('.red');
         
