@@ -16,7 +16,7 @@ const startquiz = function(){
     intropage.classList.add('hidden'); //This hides the intro page 
     getquiz.classList.remove('hidden'); //This makes the hidden question appear
     enterquestions(0);
-    
+    anscheck(0);
     nextquestion(); //Sets up listener for submit button
 }
 
@@ -33,7 +33,7 @@ const enterquestions = function(x){
     const agrab4 = document.querySelector('#four');
     agrab4.innerHTML = `${database[x].choice4}`;
     
-    anscheck(x);
+    
 
     // const answercheck = function(){
     //     agrab1.addEventListener('click', function(){
@@ -68,21 +68,15 @@ const nextquestion = function(){
         // for(x = 0; x <5; x++){
         //    // console.log(`Question ${x}`);
         // }
-        const greenstuff = document.querySelectorAll('.green');
-        Array.from(greenstuff).forEach(color);
         
-        function color(){greenstuff.classList.remove('green');
-        greenstuff.classList.add('choices');}
-        color()
-        const redstuff = document.querySelector('.red');
-        redstuff.classList.remove('red');
-        redstuff.classList.add('choices');
         
         ++x;
         if(x < 6){
             
-            enterquestions(x);
             
+            
+            enterquestions(x);
+            anscheck(x);
         }
         else{results();}
         
@@ -94,7 +88,6 @@ const nextquestion = function(){
     
 };
 const anscheck = function(x){
-    let points = 0;
     const agrab1 = document.querySelector('#one');
     
     const agrab2 = document.querySelector('#two');
@@ -103,19 +96,38 @@ const anscheck = function(x){
     
     const agrab4 = document.querySelector('#four');
     
+    
+    
+    const clear = function(){
+        agrab1.classList.remove('green');
+        agrab1.classList.remove('red');
+        agrab2.classList.remove('green');
+        agrab2.classList.remove('red');
+        agrab3.classList.remove('green');
+        agrab3.classList.remove('red');
+        agrab4.classList.remove('green');
+        agrab4.classList.remove('red');
+    }
+    clear();
+    
+    let points = 0;
+    
     const green = function(a){
         const agraba = document.querySelector(`${a}`);
-        agraba.classList.remove('choices');
+       // agraba.classList.remove('choices');
         agraba.classList.add('green');
         const score = document.querySelector('#scoretext');
         ++points;
         score.innerHTML = `Your score is ${points} / 5`;
+        
     }
     const red = function(c){
         const agrabc = document.querySelector(`${c}`);
-        agrabc.classList.remove('choices');
+        //agrabc.classList.remove('choices');
         agrabc.classList.add('red');
+        
     }
+    
     agrab1.addEventListener('click', function(){
         if(database[x].correct === "choice1"){green('#one')}
         else{red('#one')} 
@@ -133,9 +145,10 @@ const anscheck = function(x){
         else{red('#four')} 
     })
 
+    
 }
 
-    
+
 const database = [
     {
         question: "Which Mario Kart DS track has cars and trucks as obstacles?",
