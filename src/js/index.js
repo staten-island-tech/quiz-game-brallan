@@ -56,8 +56,9 @@ const enterquestions = function(x){
     // answercheck();
 } 
 
-
+let points = 0;
 const nextquestion = function(){
+    
     const submit = document.querySelector('.submit');
     let x = 0;
     const results = function(){
@@ -68,7 +69,9 @@ const nextquestion = function(){
         // for(x = 0; x <5; x++){
         //    // console.log(`Question ${x}`);
         // }
-        
+        const choicis = document.querySelectorAll('.choices');
+        if (document.getElementsByClassName('green').length === 1){points++;}
+        else{};
         
         ++x;
         if(x < 6){
@@ -78,7 +81,9 @@ const nextquestion = function(){
             enterquestions(x);
             anscheck(x);
         }
-        else{results();}
+        else{
+            anscheck(x);
+            results();}
         
         //allchoices.classList.remove('.red');
         
@@ -87,6 +92,7 @@ const nextquestion = function(){
     })//Every time you click submit, x increases by 1, leading to new questions and choices being presented.
     
 };
+
 const anscheck = function(x){
     const agrab1 = document.querySelector('#one');
     
@@ -109,12 +115,8 @@ const anscheck = function(x){
         agrab4.classList.remove('red');
     }
     clear();
-    let points = 0;
-    const scores = function(){
-        points += 1
-        const score = document.querySelector('#scoretext');
-        score.innerHTML = `Your score is ${points} / 5`;
-    }
+    
+   
     
     
     const green = function(a){
@@ -122,7 +124,7 @@ const anscheck = function(x){
         agraba.classList.remove('red');
         agraba.classList.add('green');
         
-        scores()
+        
         //score.innerHTML = `Your score is ${points} / 5`;
         
     }
@@ -134,23 +136,24 @@ const anscheck = function(x){
     }
     
     agrab1.addEventListener('click', function(){
-        if(database[x].correct === "choice1"){green('#one')}
+        if(database[x].correct === "choice1"){green('#one'); }
         else{red('#one')} 
     })
     agrab2.addEventListener('click', function(){
-        if(database[x].correct === "choice2"){green('#two')}
+        if(database[x].correct === "choice2"){green('#two'); }
         else{red('#two')} 
     })
     agrab3.addEventListener('click', function(){
-        if(`${database[x].correct}` === "choice3"){green('#three')}
+        if(`${database[x].correct}` === "choice3"){green('#three'); }
         else{red('#three')} 
     })
     agrab4.addEventListener('click', function(){
-        if(database[x].correct === "choice4"){green('#four')}
+        if(database[x].correct === "choice4"){green('#four'); }
         else{red('#four')} 
     })
 
-    
+    const score = document.querySelector('#scoretext');
+        score.innerHTML = `Your score is ${points} / 5`;
 }
 
 
