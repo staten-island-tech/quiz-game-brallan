@@ -1,37 +1,37 @@
 console.log("If you see this you're good to go");
 
 
-const getquiz = document.querySelector("#quiz-content");
-const intropage = document.querySelector('.intro-page');
-const startbtn = document.querySelector(".start");
+const getQuiz = document.querySelector("#quiz-content");
+const introPage = document.querySelector('.intro-page');
+const startBtn = document.querySelector(".start");
 
 
 
-const listener = startbtn.addEventListener("click", function(){
+const listener = startBtn.addEventListener("click", function(){
      
-     startquiz()
+     startQuiz()
 });
 
-const startquiz = function(){
-    intropage.classList.add('hidden'); //This hides the intro page 
-    getquiz.classList.remove('hidden'); //This makes the hidden question appear
-    enterquestions(0);
-    anscheck(0);
-    nextquestion(); //Sets up listener for submit button
+const startQuiz = function(){
+    introPage.classList.add('hidden'); //This hides the intro page 
+    getQuiz.classList.remove('hidden'); //This makes the hidden question appear
+    enterQuestions(0);
+    ansCheck(0);
+    nextQuestion(); //Sets up listener for submit button
 }
 
-const enterquestions = function(x){
+const enterQuestions = function(i){
     const qgrab = document.querySelector('#question') 
-    qgrab.innerHTML = `<div> ${database[x].question} </div>`;
+    qgrab.innerHTML = `<div> ${database[i].question} </div>`;
  //Replaces question html with questions from the database
     const agrab1 = document.querySelector('#one');
-    agrab1.innerHTML = `${database[x].choice1}`;
+    agrab1.innerHTML = `${database[i].choice1}`;
     const agrab2 = document.querySelector('#two');
-    agrab2.innerHTML = `${database[x].choice2}`;
+    agrab2.innerHTML = `${database[i].choice2}`;
     const agrab3 = document.querySelector('#three');
-    agrab3.innerHTML = `${database[x].choice3}`;
+    agrab3.innerHTML = `${database[i].choice3}`;
     const agrab4 = document.querySelector('#four');
-    agrab4.innerHTML = `${database[x].choice4}`;
+    agrab4.innerHTML = `${database[i].choice4}`;
     
     
 
@@ -57,32 +57,32 @@ const enterquestions = function(x){
 } 
 
 let points = 0;
-const nextquestion = function(){
+const nextQuestion = function(){
     
     const submit = document.querySelector('.submit');
-    let x = 0;
+    let i = 0;
     const results = function(){
-        getquiz.classList.add('hidden');
+        getQuiz.classList.add('hidden');
         resultspage.classList.remove('hidden');
     }
     submit.addEventListener('click', function(){
         // for(x = 0; x <5; x++){
         //    // console.log(`Question ${x}`);
         // }
-        const choicis = document.querySelectorAll('.choices');
+        
         if (document.getElementsByClassName('green').length === 1){points++;}
         else{};
         
-        ++x;
-        if(x < 6){
+        ++i;
+        if(i < 6){
             
             
             
-            enterquestions(x);
-            anscheck(x);
+            enterQuestions(i);
+            ansCheck(i);
         }
         else{
-            anscheck(x);
+            ansCheck(i);
             results();}
         
         //allchoices.classList.remove('.red');
@@ -93,7 +93,7 @@ const nextquestion = function(){
     
 };
 
-const anscheck = function(x){
+const ansCheck = function(i){
     const agrab1 = document.querySelector('#one');
     
     const agrab2 = document.querySelector('#two');
@@ -134,26 +134,32 @@ const anscheck = function(x){
         agrabc.classList.add('red');
         
     }
+    const getChoice = document.querySelectorAll('.choices');
     
+    // getChoice.forEach((choice, i) =>{
+    //     choice.addEventListener('click', function(){if(database[i].correct === "choice1"){green('#one'); }
+    //      else{red('#one')} });
+    // })
     agrab1.addEventListener('click', function(){
-        if(database[x].correct === "choice1"){green('#one'); }
+        if(database[i].correct === "choice1"){green('#one'); }
         else{red('#one')} 
     })
     agrab2.addEventListener('click', function(){
-        if(database[x].correct === "choice2"){green('#two'); }
+        if(database[i].correct === "choice2"){green('#two'); }
         else{red('#two')} 
     })
     agrab3.addEventListener('click', function(){
-        if(`${database[x].correct}` === "choice3"){green('#three'); }
+        if(`${database[i].correct}` === "choice3"){green('#three'); }
         else{red('#three')} 
     })
     agrab4.addEventListener('click', function(){
-        if(database[x].correct === "choice4"){green('#four'); }
+        if(database[i].correct === "choice4"){green('#four'); }
         else{red('#four')} 
     })
 
     const score = document.querySelector('#scoretext');
-        score.innerHTML = `Your score is ${points} / 5`;
+    score.innerHTML = `Your score is ${points} / 5`;
+    if (points == 6){score.innerHTML = `Woah! You really know your Mario Kart! Your score is ${points} / 5!`}
 }
 
 
